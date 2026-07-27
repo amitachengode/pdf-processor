@@ -29,6 +29,8 @@ with col1:
 
 with col2:
     st.info("**Slice PDF**\n\nExtract a specific range of pages (e.g., pages 5 through 10) into a new file.")
+    if st.button("Launch", key="slice_btn", use_container_width=True):
+            st.switch_page("pages/2_slice_pdf.py")
 
 with col3:
     st.info("**Drop Pages**\n\nRemove specific, individual pages from a document to clean it up.")
