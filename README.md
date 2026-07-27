@@ -156,10 +156,6 @@ Potential features for future releases:
 - Extract text/images
 - Split PDF by bookmarks
 
-## License
-
-[Add your license here]
-
 ## Contributing
 
 Contributions are welcome! Please feel free to submit pull requests.
