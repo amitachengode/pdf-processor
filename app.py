@@ -34,5 +34,7 @@ with col2:
 
 with col3:
     st.info("**Drop Pages**\n\nRemove specific, individual pages from a document to clean it up.")
+    if st.button("Launch", key="drop_btn", use_container_width=True):
+                st.switch_page("pages/3_drop_page.py")
 
 st.write("---")
