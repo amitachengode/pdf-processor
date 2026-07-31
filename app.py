@@ -3,7 +3,8 @@ import streamlit as st
 st.set_page_config(
     page_title="PDF Toolkit",
     page_icon="📄",
-    layout="centered"
+    layout="centered",
+    initial_sidebar_state="collapsed"
 )
 
 st.title("Welcome to the PDF Toolkit")

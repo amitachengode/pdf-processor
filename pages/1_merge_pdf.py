@@ -7,7 +7,10 @@ if "merged_pdf" not in st.session_state:
 def clear_merge():
     st.session_state.merged_pdf=None
 
-st.set_page_config(page_title="PDF Merger", page_icon="📄", layout='wide')
+st.set_page_config(page_title="PDF Merger", 
+                   page_icon="📄", 
+                   layout='wide', 
+                   initial_sidebar_state="collapsed")
 
 st.title("PDF Merger")
 st.write("Upload multiple PDF files to merge them into one.")
@@ -16,7 +19,12 @@ upload_section, export_section = st.columns([3, 1],)
 
 with upload_section:
     st.subheader("Upload")
-    uploaded_files = st.file_uploader(label="", type=["pdf"], accept_multiple_files=True, label_visibility="collapsed", on_change=clear_merge)
+    uploaded_files = st.file_uploader(label="", 
+                                      type=["pdf"], 
+                                      accept_multiple_files=True, 
+                                      label_visibility="collapsed", 
+                                      on_change=clear_merge
+                                      )
 
     if not uploaded_files:
             st.warning("Upload file")
@@ -35,5 +43,9 @@ with export_section:
         st.warning("Upload at least two files.")
 
     if st.session_state.merged_pdf is not None:
-        st.download_button("Export", data=st.session_state.merged_pdf, file_name=filename, mime="application/pdf", use_container_width=True)
+        st.download_button("Export", 
+                           data=st.session_state.merged_pdf, 
+                           file_name=filename, 
+                           mime="application/pdf", 
+                           use_container_width=True)
 
