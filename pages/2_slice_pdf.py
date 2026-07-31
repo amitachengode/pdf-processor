@@ -2,6 +2,12 @@ import streamlit as st
 import pypdf
 from pdf_processor import slice_pdf
 
+if "sliced_pdf" not in st.session_state:
+    st.session_state.sliced_pdf=None
+
+def clear_sliced_state():
+    st.session_state.sliced_pdf=None
+
 st.set_page_config(page_title="PDF Spliter", page_icon="📄", layout='wide')
 
 st.title("PDF Slicer")
@@ -11,10 +17,10 @@ upload_section, export_section = st.columns([3, 1],)
 
 with upload_section:
     st.subheader("Upload")
-    uploaded_files = st.file_uploader(label="", type=["pdf"], accept_multiple_files=False, label_visibility="collapsed")
+    uploaded_files = st.file_uploader(label="", type=["pdf"], accept_multiple_files=False, label_visibility="collapsed", on_change=clear_sliced_state)
 
     if not uploaded_files:
-        st.warning("Upload file for slicing.")
+        st.warning("Upload file")
     else:
         pages_len = len(pypdf.PdfReader(uploaded_files).pages)
         st.write(f"Page count: {pages_len}")
@@ -25,11 +31,11 @@ with export_section:
     end_page = st.number_input("End Page", min_value=1, max_value=None, value=None)
     filename = st.text_input("output file name", value="sliced_document.pdf")
 
-    if uploaded_files:
-        if st.button("Split", use_container_width=True):
-            with st.spinner():
-                sliced_pdf = slice_pdf(uploaded_files, start_page-1, end_page=end_page if end_page else None)
-            st.download_button("Export", data=sliced_pdf, file_name=filename, mime="application/pdf", use_container_width=True)
+    is_disabled = not uploaded_files
 
-    else:
-        st.button("Split", use_container_width=True, disabled=True)
+    if st.button("Split", use_container_width=True, disabled=is_disabled):
+        with st.spinner():
+            st.session_state.sliced_pdf = slice_pdf(uploaded_files, start_page-1, end_page=end_page if end_page else None)
+
+    if st.session_state.sliced_pdf:
+        st.download_button("Export", data=st.session_state.sliced_pdf, file_name=filename, mime="application/pdf", use_container_width=True)
