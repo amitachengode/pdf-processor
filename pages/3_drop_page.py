@@ -1,35 +1,6 @@
 import streamlit as st
 import pypdf
-from pdf_processor import drop_pages_pdf
-
-# --- 1. The Parser Function ---
-def parse_page_ranges(range_string: str, max_pages: int) -> list[int]:
-    pages_to_drop = set()
-    
-    for part in range_string.split(','):
-        part = part.strip()
-        if not part:
-            continue
-            
-        if '-' in part:
-            try:
-                start, end = map(int, part.split('-'))
-                start = max(1, start)
-                end = min(max_pages, end)
-                if start <= end:
-                    for p in range(start, end + 1):
-                        pages_to_drop.add(p - 1)
-            except ValueError:
-                pass                
-        else:
-            try:
-                p = int(part)
-                if 1 <= p <= max_pages:
-                    pages_to_drop.add(p - 1)
-            except ValueError:
-                pass
-                
-    return list(pages_to_drop)
+from pdf_processor import drop_pages_pdf, parse_page_ranges
 
 st.set_page_config(page_title="Page Dropper", page_icon="📄", layout='wide')
 
