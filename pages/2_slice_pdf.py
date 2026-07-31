@@ -29,7 +29,7 @@ with export_section:
         if st.button("Split", use_container_width=True):
             with st.spinner():
                 sliced_pdf = slice_pdf(uploaded_files, start_page-1, end_page=end_page if end_page else None)
-            st.download_button("Download Sliced PDF", data=sliced_pdf, file_name=filename, mime="application/pdf", use_container_width=True)
+            st.download_button("Export", data=sliced_pdf, file_name=filename, mime="application/pdf", use_container_width=True)
 
     else:
         st.button("Split", use_container_width=True, disabled=True)
