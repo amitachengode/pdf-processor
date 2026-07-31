@@ -17,14 +17,14 @@ upload_section, export_section = st.columns([3, 1],)
 
 with upload_section:
     st.subheader("Upload")
-    uploaded_files = st.file_uploader(label="", type=["pdf"], accept_multiple_files=False, label_visibility="collapsed")
+    uploaded_files = st.file_uploader(label="", type=["pdf"], accept_multiple_files=False, label_visibility="collapsed", on_change=clear_drop_state)
 
     if not uploaded_files:
             st.warning("Upload file")
 
 with export_section:
     st.subheader("Export")
-    page_input = st.text_input("Select pages to drop (e.g., 1, 3, 5-10)", placeholder="1, 3, 5-10")
+    page_input = st.text_input("Select pages to drop (e.g., 1, 3, 5-10)", placeholder="1, 3, 5-10", on_change=clear_drop_state)
     filename = st.text_input("output file name", value="dropped_document.pdf")
 
     is_disabled = not (uploaded_files and page_input)

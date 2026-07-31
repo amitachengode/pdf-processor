@@ -27,8 +27,8 @@ with upload_section:
 
 with export_section:
     st.subheader("Export")
-    start_page = st.number_input("Start Page", min_value=1, max_value=None, value=1)
-    end_page = st.number_input("End Page", min_value=1, max_value=None, value=None)
+    start_page = st.number_input("Start Page", min_value=1, max_value=None, value=1, on_change=clear_sliced_state)
+    end_page = st.number_input("End Page", min_value=1, max_value=None, value=None, on_change=clear_sliced_state)
     filename = st.text_input("output file name", value="sliced_document.pdf")
 
     is_disabled = not uploaded_files
