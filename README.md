@@ -101,11 +101,10 @@ pdf-processor/
 ├── app.py                    # Main Streamlit app entry point
 ├── pdf_processor.py          # Core PDF manipulation functions
 ├── pyproject.toml            # Project metadata and dependencies
-├── pages/
-│   ├── 1_merge_pdf.py       # PDF merge tool UI
-│   ├── 2_slice_pdf.py       # PDF slicer UI
-│   └── 3_drop_page.py       # Page dropper UI
-└── data/                     # Data directory (for future use)
+└── pages/
+    ├── 1_merge_pdf.py       # PDF merge tool UI
+    ├── 2_slice_pdf.py       # PDF slicer UI
+    └── 3_drop_page.py       # Page dropper UI
 ```
 
 ## Dependencies
@@ -114,38 +113,6 @@ pdf-processor/
 - **pypdf** (>=6.14.2) - PDF manipulation library
 
 See `pyproject.toml` for complete dependency specifications.
-
-## Architecture
-
-### Core Module: `pdf_processor.py`
-
-Contains three main functions:
-
-- **`merge_pdf(uploaded_files: list) -> io.BytesIO`**  
-  Combines multiple PDF files into a single document.
-
-- **`slice_pdf(uploaded_file: io.BytesIO, start_page: int, end_page: int|None) -> io.BytesIO`**  
-  Extracts pages from `start_page` to `end_page` (inclusive, 0-indexed internally).
-
-- **`drop_pages_pdf(uploaded_file: io.BytesIO, page_list: list[int]) -> io.BytesIO`**  
-  Removes specified pages from a PDF document.
-
-### UI Pages: `pages/`
-
-Each page implements:
-
-- File upload interface
-- Operation-specific parameter inputs
-- Progress feedback via spinners
-- Download button for the processed PDF
-
-The **Drop Pages** tool includes advanced page range parsing (`parse_page_ranges()`) to support flexible user input like `1, 3, 5-10`.
-
-## Performance Notes
-
-- All processing occurs in memory (RAM), making it very fast
-- Processing speed depends on PDF complexity and file size
-- No temporary files are created during processing
 
 ## Future Enhancements
 
