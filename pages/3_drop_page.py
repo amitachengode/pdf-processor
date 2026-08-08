@@ -21,7 +21,7 @@ upload_section, export_section = st.columns([3, 1],)
 
 with upload_section:
     st.subheader("Upload")
-    uploaded_files = st.file_uploader(label="", 
+    uploaded_files = st.file_uploader(label="upload", 
                                       type=["pdf"], 
                                       accept_multiple_files=False, 
                                       label_visibility="collapsed", 
