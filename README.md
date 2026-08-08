@@ -2,17 +2,19 @@
 
 A fast, secure, and privacy-focused PDF manipulation application built with Streamlit. Process your PDFs entirely in memory with zero leftover files on disk.
 
+Visit [pdfisbeingprocessed.streamlit.app](https://pdfisbeingprocessed.streamlit.app/)
+
 ## Features
 
-### 🔗 Merge PDFs
+### Merge PDFs
 
 Combine two or more PDF files into a single, continuous document. Perfect for consolidating reports, invoices, or multi-part documents.
 
-### ✂️ Slice PDF
+### Slice PDF
 
 Extract a specific range of pages (e.g., pages 5 through 10) from a PDF. Useful for isolating chapters, sections, or specific content from larger documents.
 
-### 🗑️ Drop Pages
+### Drop Pages
 
 Remove specific individual pages from a document. Use flexible syntax to drop single pages or page ranges (e.g., `1, 3, 5-10`).
 
