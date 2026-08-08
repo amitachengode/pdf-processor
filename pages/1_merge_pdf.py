@@ -12,6 +12,9 @@ st.set_page_config(page_title="PDF Merger",
                    layout='wide', 
                    initial_sidebar_state="collapsed")
 
+if st.button("Home"):
+    st.switch_page("app.py")
+
 st.title("PDF Merger")
 st.write("Upload multiple PDF files to merge them into one.")
 

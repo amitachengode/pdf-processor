@@ -14,6 +14,9 @@ st.set_page_config(page_title="Page Dropper",
                    initial_sidebar_state="collapsed"
                    )
 
+if st.button("Home"):
+    st.switch_page("app.py")
+
 st.title("Page Dropper")
 st.write("Upload a PDF file to drop pages from it.")
 

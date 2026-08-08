@@ -14,6 +14,9 @@ st.set_page_config(page_title="PDF Spliter",
                    initial_sidebar_state="collapsed"
                    )
 
+if st.button("Home"):
+    st.switch_page("app.py")
+
 st.title("PDF Slicer")
 st.write("Upload a PDF file to slice it portion of the pdf.")
 
